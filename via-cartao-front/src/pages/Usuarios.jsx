@@ -129,7 +129,7 @@ function Usuarios() {
               fontSize: '42px'
             }}
           >
-            👥 Usuários
+            👤 Contas
           </h1>
 
           <button
@@ -166,19 +166,19 @@ function Usuarios() {
               marginBottom: '25px'
             }}
           >
-            {idEditando ? '✏️ Editar Usuário' : '👤 Cadastrar Usuário'}
+            {idEditando ? '✏️ Editar Conta' : '➕ Adicionar Conta'}
           </h1>
 
           <input
             type="text"
-            placeholder="Nome"
+            placeholder="Nome do titular"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             style={{
               display: 'block',
               marginBottom: '15px',
               padding: '12px',
-              width: '320px',
+              width: '360px',
               borderRadius: '10px',
               border: 'none',
               backgroundColor: '#f1f5f9'
@@ -187,14 +187,14 @@ function Usuarios() {
 
           <input
             type="email"
-            placeholder="Email"
+            placeholder="E-mail da conta"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{
               display: 'block',
               marginBottom: '15px',
               padding: '12px',
-              width: '320px',
+              width: '360px',
               borderRadius: '10px',
               border: 'none',
               backgroundColor: '#f1f5f9'
@@ -203,14 +203,14 @@ function Usuarios() {
 
           <input
             type="password"
-            placeholder="Senha"
+            placeholder="Senha de acesso"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             style={{
               display: 'block',
               marginBottom: '20px',
               padding: '12px',
-              width: '320px',
+              width: '360px',
               borderRadius: '10px',
               border: 'none',
               backgroundColor: '#f1f5f9'
@@ -231,7 +231,7 @@ function Usuarios() {
               boxShadow: '0 0 10px rgba(0,0,0,0.2)'
             }}
           >
-            {idEditando ? 'Salvar Alterações' : 'Cadastrar'}
+            {idEditando ? 'Salvar Alterações' : 'Adicionar Conta'}
           </button>
 
         </div>
@@ -251,14 +251,14 @@ function Usuarios() {
               }}
             >
 
-              <h2>{usuario.nome}</h2>
+              <h2>👤 {usuario.nome}</h2>
 
               <p
                 style={{
                   color: '#cbd5e1'
                 }}
               >
-                {usuario.email}
+                📧 {usuario.email}
               </p>
 
               <div
@@ -295,7 +295,7 @@ function Usuarios() {
                     fontWeight: 'bold'
                   }}
                 >
-                  Editar
+                  Editar Conta
                 </button>
 
               </div>
