@@ -67,7 +67,7 @@ function Dashboard() {
                 color: '#94a3b8'
               }}
             >
-              Saldo disponível
+              💳 Saldo Disponível
             </p>
 
             <h2
@@ -103,7 +103,7 @@ function Dashboard() {
             }}
           >
 
-            <h3>👤 Usuários</h3>
+            <h3>💼 Contas Vinculadas</h3>
 
             <h1
               style={{
@@ -111,7 +111,7 @@ function Dashboard() {
                 margin: '10px 0'
               }}
             >
-              25
+              8
             </h1>
 
             <p
@@ -133,7 +133,7 @@ function Dashboard() {
             }}
           >
 
-            <h3>💳 Cartões</h3>
+            <h3>💳 Cartões Vinculados</h3>
 
             <h1
               style={{
@@ -163,7 +163,7 @@ function Dashboard() {
             }}
           >
 
-            <h3>💸 Transações</h3>
+            <h3>💸 Movimentações</h3>
 
             <h1
               style={{
@@ -179,7 +179,7 @@ function Dashboard() {
                 color: '#94a3b8'
               }}
             >
-              Transações este mês
+              Movimentações registradas
             </p>
 
           </div>
@@ -208,7 +208,7 @@ function Dashboard() {
                 marginBottom: '25px'
               }}
             >
-              📈 Resumo Financeiro
+              📈 Fluxo Financeiro
             </h2>
 
             <div
@@ -274,12 +274,12 @@ function Dashboard() {
                 marginBottom: '20px'
               }}
             >
-              🔔 Atividades
+              🔔 Últimas Movimentações
             </h2>
 
-            <p>✅ Novo usuário cadastrado</p>
+            <p>✅ Nova conta adicionada</p>
 
-            <p>💳 Cartão Visa adicionado</p>
+            <p>💳 Cartão Santander Elite vinculado</p>
 
             <p>💸 Transação Netflix registrada</p>
 

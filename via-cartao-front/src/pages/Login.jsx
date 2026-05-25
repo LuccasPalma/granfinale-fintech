@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import logo from '../assets/Logo Via Cartao.jpeg'
@@ -5,13 +6,30 @@ import logo from '../assets/Logo Via Cartao.jpeg'
 function Login() {
 
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
 
-  function entrar() {
+function entrar() {
+
+  if (!email || !senha) {
+    alert('Preencha todos os campos')
+    return
+  }
+
+  if (
+    email === 'admin@viacartao.com' &&
+    senha === '123456'
+  ) {
 
     navigate('/dashboard')
 
+  } else {
+
+    alert('E-mail ou senha inválidos')
+
   }
 
+}
   return (
 
     <div
@@ -64,8 +82,9 @@ function Login() {
         </div>
 
         <input
-        type="email"
-         placeholder="E-mail"
+       value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="E-mail"
          style={{
     width: '100%',
     padding: '12px',
@@ -79,6 +98,8 @@ function Login() {
         <input
           type="password"
           placeholder="Senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
           style={{
             width: '100%',
             padding: '12px',

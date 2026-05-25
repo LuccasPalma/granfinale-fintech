@@ -90,7 +90,7 @@ function Sidebar() {
           to="/cartoes"
           style={estiloLink('/cartoes')}
         >
-          💳 Cartões Vinculados
+          💳 Cartões 
         </Link>
 
         <Link

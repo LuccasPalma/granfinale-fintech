@@ -138,11 +138,11 @@ function Transacoes() {
             backgroundColor: '#2563eb',
             color: 'white',
             border: 'none',
-            padding: '12px 22px',
+            padding: '14px 22px',
             borderRadius: '12px',
             cursor: 'pointer',
             fontWeight: 'bold',
-            fontSize: '15px',
+            fontSize: '18px',
             boxShadow: '0 0 15px rgba(0,0,0,0.3)'
           }}
         >

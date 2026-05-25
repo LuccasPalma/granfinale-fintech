@@ -152,9 +152,10 @@ function Cartoes() {
               backgroundColor: '#2563eb',
               color: 'white',
               border: 'none',
-              borderRadius: '14px',
+              borderRadius: '12px',
               cursor: 'pointer',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              fontSize: '18px'
             }}
           >
             🏠 Início
@@ -250,7 +251,7 @@ function Cartoes() {
         <button
           onClick={salvarCartao}
           style={{
-            padding: '12px 22px',
+            padding: '14px 22px',
             backgroundColor: '#2563eb',
             color: 'white',
             border: 'none',
