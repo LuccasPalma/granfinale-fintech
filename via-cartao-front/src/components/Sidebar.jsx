@@ -80,17 +80,17 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/usuarios"
-          style={estiloLink('/usuarios')}
+          to="/contas"
+          style={estiloLink('/contas')}
         >
-          👤 Usuários
+          👤 Contas
         </Link>
 
         <Link
           to="/cartoes"
           style={estiloLink('/cartoes')}
         >
-          💳 Cartões
+          💳 Cartões Vinculados
         </Link>
 
         <Link

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import api from '../services/api'
 
@@ -30,6 +31,14 @@ function Cartoes() {
   }
 
   async function salvarCartao() {
+
+    if (!numero || !limite || !bandeira || !validade) {
+
+      alert('Preencha todos os campos.')
+
+      return
+
+    }
 
     const novoCartao = {
       numero,
@@ -102,57 +111,123 @@ function Cartoes() {
 
   return (
 
-    <div style={{ marginLeft: '260px', padding: '20px', color: 'white' }}>
+      <div
+        style={{
+         backgroundColor: '#020c2b',
+         minHeight: '100vh',
+         color: 'white',
+         padding: '40px'
+        }}
+      >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+         }}
+       >
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '40px'
+        }}
+      >
+
+        <h1
+          style={{
+            fontSize: '55px',
+            margin: 0
+          }}
+        >
+          💳 Cartões Vinculados
+        </h1>
+
+        <Link to="/dashboard">
+
+          <button
+            style={{
+              padding: '14px 22px',
+              backgroundColor: '#2563eb',
+              color: 'white',
+              border: 'none',
+              borderRadius: '14px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+          >
+            🏠 Início
+          </button>
+
+        </Link>
+
+      </div>
 
       <div
         style={{
           backgroundColor: '#1e293b',
-          padding: '20px',
-          borderRadius: '10px',
-          marginBottom: '20px'
+          padding: '40px',
+          borderRadius: '20px',
+          marginBottom: '35px',
+          boxShadow: '0 0 20px rgba(0,0,0,0.25)'
         }}
       >
 
-        <h2>
-          {idEditando ? 'Editar Cartão' : 'Cadastrar Cartão'}
+        <h2
+          style={{
+            fontSize: '32px',
+            marginBottom: '30px'
+          }}
+        >
+          {idEditando ? '✏️ Editar Cartão' : '💳 Vincular Cartão'}
         </h2>
 
         <input
           type="text"
-          placeholder="Número"
+          placeholder="Número do cartão"
           value={numero}
           onChange={(e) => setNumero(e.target.value)}
           style={{
             display: 'block',
-            marginBottom: '10px',
-            padding: '10px',
-            width: '300px'
+            marginBottom: '15px',
+            padding: '14px',
+            width: '350px',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '15px'
           }}
         />
 
         <input
-          type="number"
-          placeholder="Limite"
+          type="txt"
+          placeholder="Limite disponível"
           value={limite}
           onChange={(e) => setLimite(e.target.value)}
           style={{
             display: 'block',
-            marginBottom: '10px',
-            padding: '10px',
-            width: '300px'
+            marginBottom: '15px',
+            padding: '14px',
+            width: '350px',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '15px'
           }}
         />
 
         <input
           type="text"
-          placeholder="Bandeira"
+          placeholder="Nome do cartão "
           value={bandeira}
           onChange={(e) => setBandeira(e.target.value)}
           style={{
             display: 'block',
-            marginBottom: '10px',
-            padding: '10px',
-            width: '300px'
+            marginBottom: '15px',
+            padding: '14px',
+            width: '350px',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '15px'
           }}
         />
 
@@ -163,29 +238,32 @@ function Cartoes() {
           onChange={(e) => setValidade(e.target.value)}
           style={{
             display: 'block',
-            marginBottom: '10px',
-            padding: '10px',
-            width: '300px'
+            marginBottom: '25px',
+            padding: '14px',
+            width: '350px',
+            borderRadius: '10px',
+            border: 'none',
+            fontSize: '15px'
           }}
         />
 
         <button
           onClick={salvarCartao}
           style={{
-            padding: '10px 20px',
+            padding: '12px 22px',
             backgroundColor: '#2563eb',
             color: 'white',
             border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer'
+            borderRadius: '10px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            fontSize: '15px'
           }}
         >
-          {idEditando ? 'Salvar Alterações' : 'Cadastrar'}
+          {idEditando ? 'Salvar Alterações' : '💳 Vincular Cartão'}
         </button>
 
       </div>
-
-      <h1>Cartões</h1>
 
       {
 
@@ -195,30 +273,45 @@ function Cartoes() {
             key={cartao.id}
             style={{
               backgroundColor: '#1e293b',
-              padding: '15px',
-              marginTop: '15px',
-              borderRadius: '10px'
+              padding: '40px',
+              marginBottom: '35px',
+              borderRadius: '20px',
+              boxShadow: '0 0 20px rgba(0,0,0,0.20)'
             }}
           >
 
-            <h3>{cartao.numero}</h3>
+            <h2
+              style={{
+                fontSize: '32px',
+                marginBottom: '20px'
+              }}
+            >
+              💳 {cartao.bandeira}
+            </h2>
 
-            <p>Limite: R$ {cartao.limite}</p>
+            <p style={{ fontSize: '18px' }}>
+              🔢 Número: {cartao.numero}
+            </p>
 
-            <p>{cartao.bandeira}</p>
+            <p style={{ fontSize: '18px' }}>
+              💰 Limite disponível: R$ {cartao.limite}
+            </p>
 
-            <p>Validade: {cartao.validade}</p>
+            <p style={{ fontSize: '18px' }}>
+              📅 Validade: {cartao.validade}
+            </p>
 
             <button
               onClick={() => excluirCartao(cartao.id)}
               style={{
-                padding: '8px 15px',
+                padding: '10px 18px',
                 backgroundColor: '#dc2626',
                 color: 'white',
                 border: 'none',
-                borderRadius: '8px',
+                borderRadius: '10px',
                 cursor: 'pointer',
-                marginTop: '10px'
+                marginTop: '15px',
+                fontWeight: 'bold'
               }}
             >
               Excluir
@@ -227,17 +320,18 @@ function Cartoes() {
             <button
               onClick={() => editarCartao(cartao)}
               style={{
-                padding: '8px 15px',
+                padding: '10px 18px',
                 backgroundColor: '#2563eb',
                 color: 'white',
                 border: 'none',
-                borderRadius: '8px',
+                borderRadius: '10px',
                 cursor: 'pointer',
-                marginTop: '10px',
-                marginLeft: '10px'
+                marginTop: '15px',
+                marginLeft: '10px',
+                fontWeight: 'bold'
               }}
             >
-              Editar
+              Editar Cartão
             </button>
 
           </div>
@@ -247,6 +341,7 @@ function Cartoes() {
       }
 
     </div>
+  </div>
 
   )
 
