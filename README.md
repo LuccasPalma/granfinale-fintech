@@ -1,49 +1,52 @@
-# 💳 Fintech FIAP - Via Cartão
+# Fintech FIAP - Via Cartao
 
 Sistema web de gerenciamento financeiro pessoal desenvolvido para a FIAP utilizando **Spring Boot** no backend e **ReactJS** no frontend.
 
 ---
 
-# 🔐 Login de Teste
+# Autenticacao
 
-Utilize os seguintes dados para acessar o sistema:
+O frontend esta preparado para autenticacao real via backend em:
 
-### Usuário
 ```bash
-admin@viacartao.com
+POST /auth/login
 ```
 
-### Senha
+Usuario inicial criado automaticamente pelo backend:
+
 ```bash
-123456
+email: admin@viacartao.com
+senha: 123456
 ```
+
+Tambem e possivel habilitar um login demo local durante o desenvolvimento usando as variaveis do arquivo `.env.example`.
 
 ---
 
-# 🧱 Estrutura do Projeto
+# Estrutura do Projeto
 
 ```bash
 Fintech-FIAP/
-├── backend/
-└── frontend/
++-- backend/
++-- frontend/
 ```
 
 ---
 
-# ✨ Funcionalidades
+# Funcionalidades
 
-✅ Autenticação de usuário  
-✅ Dashboard financeiro  
-✅ CRUD de contas  
-✅ CRUD de cartões vinculados  
-✅ Controle de movimentações financeiras  
-✅ Navegação com React Router DOM  
-✅ Tratamento de rotas inválidas (NotFound)  
-✅ Interface moderna com identidade visual padronizada
+- Autenticacao de usuario
+- Dashboard financeiro
+- CRUD de contas
+- CRUD de cartoes vinculados
+- Controle de movimentacoes financeiras
+- Navegacao com React Router DOM
+- Tratamento de rotas invalidas (NotFound)
+- Interface moderna com identidade visual padronizada
 
 ---
 
-# ⚙️ Backend (Spring Boot)
+# Backend (Spring Boot)
 
 ## Tecnologias utilizadas
 
@@ -51,11 +54,12 @@ Fintech-FIAP/
 - Spring Boot
 - Spring Data JPA
 - Maven
-- Oracle Database
+- H2 Database para desenvolvimento local
+- Oracle Database opcional
 
 ---
 
-## ▶️ Como executar o backend
+## Como executar o backend
 
 Abra a pasta:
 
@@ -69,21 +73,90 @@ Execute:
 ./mvnw spring-boot:run
 ```
 
-ou execute diretamente a classe:
+No Windows:
+
+```bash
+mvnw.cmd spring-boot:run
+```
+
+Ou execute diretamente no IntelliJ a classe:
 
 ```bash
 ViaCartaoApplication.java
 ```
 
-O backend iniciará na porta:
+O backend iniciara em:
 
 ```bash
 http://localhost:8080
 ```
 
+Por padrao, o backend usa um banco H2 local salvo em:
+
+```bash
+backend/data/via-cartao
+```
+
+Console H2:
+
+```bash
+http://localhost:8080/h2-console
+```
+
+Dados de conexao do H2:
+
+```bash
+JDBC URL: jdbc:h2:file:./data/via-cartao
+User: sa
+Password:
+```
+
 ---
 
-# 🖥️ Frontend (ReactJS)
+## Usar Oracle opcionalmente
+
+Para usar Oracle em vez do H2 local, defina as variaveis de ambiente antes de iniciar o backend:
+
+```bash
+DB_URL=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+DB_DRIVER=oracle.jdbc.OracleDriver
+```
+
+No PowerShell:
+
+```powershell
+$env:DB_URL="jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL"
+$env:DB_USERNAME="seu_usuario"
+$env:DB_PASSWORD="sua_senha"
+$env:DB_DRIVER="oracle.jdbc.OracleDriver"
+.\mvnw.cmd spring-boot:run
+```
+
+---
+
+## Endpoints usados pelo frontend
+
+```bash
+POST   /auth/login
+GET    /usuarios
+POST   /usuarios
+PUT    /usuarios/{id}
+DELETE /usuarios/{id}
+GET    /cartoes
+POST   /cartoes
+PUT    /cartoes/{id}
+DELETE /cartoes/{id}
+GET    /transacoes
+POST   /transacoes
+PUT    /transacoes/{id}
+DELETE /transacoes/{id}
+```
+
+---
+
+# Frontend (ReactJS)
 
 ## Tecnologias utilizadas
 
@@ -92,11 +165,16 @@ http://localhost:8080
 - React Router DOM
 - JavaScript
 - Axios
-- CSS Inline
+- TanStack Query
+- React Hook Form
+- Zod
+- Sonner
+- Lucide React
+- CSS global componentizado
 
 ---
 
-## ▶️ Como executar o frontend
+## Como executar o frontend
 
 Abra a pasta:
 
@@ -104,7 +182,7 @@ Abra a pasta:
 frontend
 ```
 
-Instale as dependências:
+Instale as dependencias:
 
 ```bash
 npm install
@@ -116,59 +194,54 @@ Execute o projeto:
 npm run dev
 ```
 
-O frontend iniciará na porta:
+O frontend iniciara em:
 
 ```bash
 http://localhost:5173
 ```
 
+O frontend usa por padrao:
+
+```bash
+http://localhost:8080
+```
+
+Para alterar a URL da API, configure no `.env` do frontend:
+
+```bash
+VITE_API_URL=http://localhost:8080
+```
+
 ---
 
-# 📄 Páginas do Sistema
+# Paginas do Sistema
 
-| Página | Descrição |
+| Pagina | Descricao |
 |---|---|
-| 🔐 Login | Tela de autenticação de usuários |
-| 📊 Dashboard Financeiro | Painel principal do sistema |
-| 👤 Contas | Cadastro e gerenciamento de contas |
-| 💳 Cartões Vinculados | Cadastro e gerenciamento de cartões |
-| 💰 Controle Financeiro | Registro de movimentações financeiras |
-| 🚫 Página 404 | Tratamento de rotas inválidas |
-
-
----
-
-# 🛠️ Tecnologias Utilizadas
-
-## Backend
-- Java
-- Spring Boot
-- Maven
-- Oracle Database
-
-## Frontend
-- ReactJS
-- Vite
-- Axios
-- React Router DOM
+| Login | Tela de autenticacao de usuarios |
+| Dashboard Financeiro | Painel principal do sistema |
+| Contas | Cadastro e gerenciamento de contas |
+| Cartoes Vinculados | Cadastro e gerenciamento de cartoes |
+| Controle Financeiro | Registro de movimentacoes financeiras |
+| Pagina 404 | Tratamento de rotas invalidas |
 
 ---
 
-# 🎯 Objetivo do Projeto
+# Objetivo do Projeto
 
-Desenvolver uma aplicação financeira moderna utilizando integração entre frontend e backend, aplicando conceitos de:
+Desenvolver uma aplicacao financeira moderna utilizando integracao entre frontend e backend, aplicando conceitos de:
 
 - APIs REST
 - CRUD completo
-- Navegação SPA
-- Componentização
-- Integração com banco de dados
-- Organização visual e experiência do usuário
+- Navegacao SPA
+- Componentizacao
+- Integracao com banco de dados
+- Organizacao visual e experiencia do usuario
 
 ---
 
-# 🎓 Desenvolvido para
+# Desenvolvido para
 
-FIAP — Faculdade de Informática e Administração Paulista
+FIAP - Faculdade de Informatica e Administracao Paulista
 
-Projeto acadêmico desenvolvido para avaliação da disciplina de Frontend e Java Spring Boot.
+Projeto academico desenvolvido para avaliacao da disciplina de Frontend e Java Spring Boot.

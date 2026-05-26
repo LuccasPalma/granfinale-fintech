@@ -1,139 +1,87 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LogIn } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import Button from '../components/ui/Button'
+import Input from '../components/ui/Input'
+import { useAuth } from '../features/auth/useAuth'
 import logo from '../assets/Logo Via Cartao.jpeg'
 
+const loginSchema = z.object({
+  email: z.string().email('Informe um e-mail válido.'),
+  senha: z.string().min(1, 'Informe sua senha.'),
+})
+
 function Login() {
-
+  const location = useLocation()
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [senha, setSenha] = useState('')
+  const { isAuthenticated, login } = useAuth()
+  const {
+    formState: { errors, isSubmitting },
+    handleSubmit,
+    register,
+  } = useForm({
+    defaultValues: {
+      email: '',
+      senha: '',
+    },
+    resolver: zodResolver(loginSchema),
+  })
 
-function entrar() {
+  const redirectTo = location.state?.from?.pathname || '/dashboard'
 
-  if (!email || !senha) {
-    alert('Preencha todos os campos')
-    return
+  if (isAuthenticated) {
+    navigate(redirectTo, { replace: true })
   }
 
-  if (
-    email === 'admin@viacartao.com' &&
-    senha === '123456'
-  ) {
-
-    navigate('/dashboard')
-
-  } else {
-
-    alert('E-mail ou senha inválidos')
-
+  async function handleLogin(values) {
+    try {
+      await login(values)
+      toast.success('Login realizado com sucesso.')
+      navigate(redirectTo, { replace: true })
+    } catch {
+      toast.error('E-mail ou senha inválidos.')
+    }
   }
 
-}
   return (
-
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#020f2b'
-      }}
-    >
-
-      <div
-        style={{
-          backgroundColor: '#1e293b',
-          padding: '40px',
-          borderRadius: '10px',
-          width: '350px'
-        }}
-      >
-
-        <div
-  style={{
-    display: 'flex',
-    alignItems: 'center',
-    gap: '15px',
-    marginBottom: '20px'
-  }}
->
-
-     <img
-      src={logo}
-      alt="Logo Via Cartão"
-      style={{
-      width: '70px',
-      height: '70px',
-      borderRadius: '12px'
-      }}
-       />
-
-        <h1
-        style={{
-        color: 'white',
-       margin: 0
-       }}
-        >
-        Via Cartão
-        </h1>
-
+    <main className="login-page">
+      <section className="login-card" aria-labelledby="login-title">
+        <div className="login-brand">
+          <img alt="Logo Via Cartão" src={logo} />
+          <div>
+            <h1 id="login-title">Via Cartão</h1>
+            <p>Controle financeiro integrado</p>
+          </div>
         </div>
 
-        <input
-       value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="E-mail"
-         style={{
-    width: '100%',
-    padding: '12px',
-    marginBottom: '15px',
-    borderRadius: '8px',
-    border: 'none',
-    boxSizing: 'border-box'
-  }}
-/>
+        <form className="login-form" onSubmit={handleSubmit(handleLogin)}>
+          <Input
+            autoComplete="email"
+            error={errors.email?.message}
+            label="E-mail"
+            placeholder="admin@viacartao.com"
+            type="email"
+            {...register('email')}
+          />
+          <Input
+            autoComplete="current-password"
+            error={errors.senha?.message}
+            label="Senha"
+            placeholder="Digite sua senha"
+            type="password"
+            {...register('senha')}
+          />
 
-        <input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          style={{
-            width: '100%',
-            padding: '12px',
-            marginBottom: '15px',
-            borderRadius: '8px',
-            border: 'none',
-            boxSizing: 'border-box'
-          }}
-        />
-
-        <button
-  onClick={entrar}
-  style={{
-    width: '100%',
-    padding: '12px',
-    backgroundColor: '#2563eb',
-    color: 'white',
-    border: 'none',
-    borderRadius: '10px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    marginTop: '5px'
-  }}
->
-  Entrar
-</button>
-
-      </div>
-
-    </div>
-
+          <Button disabled={isSubmitting} icon={LogIn} type="submit">
+            {isSubmitting ? 'Entrando...' : 'Entrar'}
+          </Button>
+        </form>
+      </section>
+    </main>
   )
-
 }
 
 export default Login
