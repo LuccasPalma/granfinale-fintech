@@ -137,7 +137,7 @@ function Cartoes() {
 
         <h1
           style={{
-            fontSize: '55px',
+            fontSize: '42px',
             margin: 0
           }}
         >
@@ -177,8 +177,8 @@ function Cartoes() {
 
         <h2
           style={{
-            fontSize: '32px',
-            marginBottom: '30px'
+            marginBottom: '30px',
+            fontSize: '32px'
           }}
         >
           {idEditando ? '✏️ Editar Cartão' : '💳 Vincular Cartão'}

@@ -99,13 +99,14 @@ function Usuarios() {
 
   return (
 
-    <div
-      style={{
-        marginLeft: '260px',
-        padding: '30px',
-        color: 'white'
-      }}
-    >
+      <div
+        style={{
+        backgroundColor: '#020c2b',
+        minHeight: '100vh',
+        color: 'white',
+        padding: '40px'
+        }}
+      >
 
       <div
         style={{
@@ -119,7 +120,7 @@ function Usuarios() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '25px'
+            marginBottom: '40px'
           }}
         >
 
@@ -138,7 +139,7 @@ function Usuarios() {
               backgroundColor: '#2563eb',
               color: 'white',
               border: 'none',
-              padding: '12px 20px',
+              padding: '14px 22px',
               borderRadius: '12px',
               cursor: 'pointer',
               fontWeight: 'bold',
@@ -154,20 +155,21 @@ function Usuarios() {
         <div
           style={{
             backgroundColor: '#1e293b',
-            padding: '30px',
-            borderRadius: '16px',
-            marginBottom: '30px',
+            padding: '35px',
+            borderRadius: '20px',
+            marginBottom: '35px',
             boxShadow: '0 0 20px rgba(0,0,0,0.2)'
           }}
         >
 
-          <h1
+          <h2
             style={{
-              marginBottom: '25px'
+             marginBottom: '35px',
+             fontSize: '32px'
             }}
           >
             {idEditando ? '✏️ Editar Conta' : '➕ Adicionar Conta'}
-          </h1>
+          </h2>
 
           <input
             type="text"
@@ -177,11 +179,12 @@ function Usuarios() {
             style={{
               display: 'block',
               marginBottom: '15px',
-              padding: '12px',
-              width: '360px',
+              padding: '14px',
+              width: '350px',
               borderRadius: '10px',
               border: 'none',
-              backgroundColor: '#f1f5f9'
+              backgroundColor: '#f1f5f9',
+              fontSize: '15px'
             }}
           />
 
@@ -193,11 +196,12 @@ function Usuarios() {
             style={{
               display: 'block',
               marginBottom: '15px',
-              padding: '12px',
-              width: '360px',
+              padding: '14px',
+              width: '350px',
               borderRadius: '10px',
               border: 'none',
-              backgroundColor: '#f1f5f9'
+              backgroundColor: '#f1f5f9',
+              fontSize: '15px'
             }}
           />
 
@@ -208,19 +212,20 @@ function Usuarios() {
             onChange={(e) => setSenha(e.target.value)}
             style={{
               display: 'block',
-              marginBottom: '20px',
-              padding: '12px',
-              width: '360px',
+              marginBottom: '35px',
+              padding: '14px',
+              width: '350px',
               borderRadius: '10px',
               border: 'none',
-              backgroundColor: '#f1f5f9'
+              backgroundColor: '#f1f5f9',
+              fontSize: '15px'
             }}
           />
 
           <button
             onClick={cadastrarUsuario}
             style={{
-              padding: '12px 25px',
+              padding: '14px 24px',
               backgroundColor: '#2563eb',
               color: 'white',
               border: 'none',
@@ -244,18 +249,27 @@ function Usuarios() {
               key={usuario.id}
               style={{
                 backgroundColor: '#1e293b',
-                padding: '25px',
-                marginBottom: '20px',
-                borderRadius: '16px',
-                boxShadow: '0 0 15px rgba(0,0,0,0.2)'
+                padding: '35px',
+                marginBottom: '35px',
+                borderRadius: '18px',
+                boxShadow: '0 0 20px rgba(0,0,0,0.20)'
               }}
             >
 
-              <h2>👤 {usuario.nome}</h2>
+              <h2
+                style={{
+                  fontSize: '32px',
+                  marginBottom: '18px'
+                }}
+              >
+            👤 {usuario.nome}
+              </h2>
 
               <p
                 style={{
-                  color: '#cbd5e1'
+                  color: '#cbd5e1',
+                  fontSize: '20px',
+                  marginBottom: '12px'
                 }}
               >
                 📧 {usuario.email}

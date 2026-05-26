@@ -106,15 +106,22 @@ function Transacoes() {
 
   return (
 
-    <div
-      style={{
-        marginLeft: '260px',
-        padding: '40px',
-        color: 'white',
-        maxWidth: '1100px'
-      }}
-    >
+      <div
+        style={{
+          backgroundColor: '#020f2b',
+          minHeight: '100vh',
+          color: 'white',
+          padding: '40px'
+        }}
+      > 
 
+      <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto'
+          }}
+      >
+        
       <div
         style={{
           display: 'flex',
@@ -126,7 +133,8 @@ function Transacoes() {
 
         <h1
           style={{
-            fontSize: '42px'
+            fontSize: '42px',
+            margin: '0'
           }}
         >
           💰  Controle Financeiro
@@ -163,7 +171,7 @@ function Transacoes() {
 
         <h2
           style={{
-            marginBottom: '25px',
+            marginBottom: '30px',
             fontSize: '32px'
           }}
         >
@@ -178,11 +186,12 @@ function Transacoes() {
           style={{
             display: 'block',
             marginBottom: '15px',
-            padding: '12px',
+            padding: '14px',
             width: '320px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: '#f1f5f9'
+            backgroundColor: '#f1f5f9',
+            fontSize: '15px'
           }}
         />
 
@@ -194,11 +203,12 @@ function Transacoes() {
           style={{
             display: 'block',
             marginBottom: '15px',
-            padding: '12px',
+            padding: '14px',
             width: '320px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: '#f1f5f9'
+            backgroundColor: '#f1f5f9',
+            fontSize: '15px'
           }}
         />
 
@@ -208,11 +218,12 @@ function Transacoes() {
           style={{
             display: 'block',
             marginBottom: '15px',
-            padding: '12px',
+            padding: '14px',
             width: '345px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: '#f1f5f9'
+            backgroundColor: '#f1f5f9',
+            fontSize: '15px'
           }}
         >
 
@@ -238,21 +249,23 @@ function Transacoes() {
             width: '320px',
             borderRadius: '10px',
             border: 'none',
-            backgroundColor: '#f1f5f9'
+            backgroundColor: '#f1f5f9',
+            fontSize: '15px'
           }}
         />
 
         <button
           onClick={salvarTransacao}
           style={{
-            padding: '12px 24px',
+            padding: '14px 24px',
             backgroundColor: '#2563eb',
             color: 'white',
             border: 'none',
             borderRadius: '10px',
             cursor: 'pointer',
             fontWeight: 'bold',
-            fontSize: '15px'
+            fontSize: '15px',
+            transition: '0.2s'
           }}
         >
           {idEditando ? 'Salvar Alterações' : 'Cadastrar'}
@@ -268,7 +281,7 @@ function Transacoes() {
             key={transacao.id}
             style={{
               backgroundColor: '#1e293b',
-              padding: '25px',
+              padding: '35px',
               marginTop: '25px',
               borderRadius: '18px',
               boxShadow: '0 0 15px rgba(0,0,0,0.2)'
@@ -277,22 +290,38 @@ function Transacoes() {
 
             <h2
               style={{
-                marginBottom: '15px'
+                marginBottom: '18px',
+                fontSize: '36px'
               }}
             >
               {transacao.descricao}
             </h2>
 
-            <p>
-              💰 Valor: R$ {transacao.valor}
+            <p
+              style={{
+                fontSize: '20px',
+                marginBottom: '12px'
+              }}
+            >
+            💰 Valor: R$ {transacao.valor}
             </p>
 
-            <p>
-              📌 Tipo: {transacao.tipo}
+            <p
+              style={{
+                fontSize: '20px',
+                marginBottom: '12px'
+              }}
+            >
+            📌 Tipo: {transacao.tipo}
             </p>
 
-            <p>
-             🗓️ Dia do lançamento: {transacao.dataTransacao?.split('-')[2]}
+            <p
+              style={{
+                fontSize: '20px',
+                marginBottom: '12px'
+              }}
+            >
+            🗓️ Dia do lançamento: {transacao.dataTransacao?.split('-')[2]}
             </p>
 
             <div
@@ -339,6 +368,7 @@ function Transacoes() {
         ))
 
       }
+  </div>
 
     </div>
 

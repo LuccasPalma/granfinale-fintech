@@ -39,7 +39,7 @@ Fintech-FIAP/
 ✅ Controle de movimentações financeiras  
 ✅ Navegação com React Router DOM  
 ✅ Tratamento de rotas inválidas (NotFound)  
-✅ Interface responsiva e moderna  
+✅ Interface moderna com identidade visual padronizada
 
 ---
 
@@ -128,12 +128,13 @@ http://localhost:5173
 
 | Página | Descrição |
 |---|---|
-| 🔐 Login | Tela de autenticação do sistema |
-| 📊 Dashboard | Painel financeiro principal |
+| 🔐 Login | Tela de autenticação de usuários |
+| 📊 Dashboard Financeiro | Painel principal do sistema |
 | 👤 Contas | Cadastro e gerenciamento de contas |
-| 💳 Cartões Vinculados | Gerenciamento de cartões |
+| 💳 Cartões Vinculados | Cadastro e gerenciamento de cartões |
 | 💰 Controle Financeiro | Registro de movimentações financeiras |
-| 🚫 NotFound | Tratamento de rotas inválidas |
+| 🚫 Página 404 | Tratamento de rotas inválidas |
+
 
 ---
 
